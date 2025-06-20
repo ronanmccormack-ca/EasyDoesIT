@@ -807,8 +807,10 @@
         });
 
         // Form submission handling
+        // Replace your form submission handler with this debug version:
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('Form submitted!'); // Debug log
             
             // Show loading state
             const submitBtn = this.querySelector('.form-submit');
@@ -816,23 +818,50 @@
             submitBtn.innerHTML = '<span>Sending...</span>';
             submitBtn.disabled = true;
             
+            // Debug: Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS is not loaded!');
+                alert('EmailJS library failed to load. Please check your internet connection.');
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Debug: Log the values being sent
+            console.log('EmailJS Public Key:', 'kpSEWEfyxHhJ_uXcS');
+            console.log('Service ID will be replaced by deploy script');
+            console.log('Template ID will be replaced by deploy script');
+            
             // Send email using EmailJS
             emailjs.sendForm(
-                'YOUR_SERVICE_ID',    // Replace with your actual EmailJS service ID
-                'YOUR_TEMPLATE_ID',   // Replace with your actual EmailJS template ID
+                'YOUR_SERVICE_ID',    // This gets replaced by your deploy script
+                'YOUR_TEMPLATE_ID',   // This gets replaced by your deploy script
                 this
             ).then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
+                console.log('EmailJS SUCCESS!', response.status, response.text);
                 alert('Thank you for your message! We\'ll get back to you within 24 hours.');
                 document.getElementById('contact-form').reset();
-            }, function(error) {
-                console.log('FAILED...', error);
-                alert('Sorry, there was an error sending your message. Please try again or email us directly.');
+            }).catch(function(error) {  // Changed from second parameter to .catch()
+                console.error('EmailJS FAILED:', error);
+                alert('Sorry, there was an error sending your message. Please try again or email us directly at support@easydoesit.ca');
             }).finally(function() {
                 // Reset button state
                 submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
             });
+        });
+
+        // Add this to test if the script is running at all:
+        console.log('EmailJS script loaded and form handler attached');
+
+        // Test if EmailJS library loaded properly
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            if (typeof emailjs !== 'undefined') {
+                console.log('EmailJS library is available');
+            } else {
+                console.error('EmailJS library is NOT available');
+            }
         });
 
         // Add scroll-triggered animations
