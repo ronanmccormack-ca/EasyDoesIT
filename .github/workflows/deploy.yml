@@ -26,30 +26,28 @@ jobs:
       run: |
         npm install -g html-minifier-terser
     
-        - name: Replace environment variables
-        run: |
-          echo "=== DEBUGGING FILE REPLACEMENT ==="
-          echo "Current directory: $(pwd)"
-          echo "Files in root:"
-          ls -la
-          echo "Looking for index.html..."
-          
-          if [ -f "index.html" ]; then
-            echo "✓ Found index.html"
-            echo "Before replacement:"
-            grep -n "YOUR_" index.html || echo "No YOUR_ placeholders found"
-            
-            # Do replacements
-            sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" index.html
-            sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" index.html
-            
-            echo "After replacement:"
-            grep -n "YOUR_" index.html || echo "✓ All placeholders replaced"
-          else
-            echo "✗ index.html NOT FOUND in root directory"
-            echo "Available HTML files:"
-            find . -name "*.html"
-          fi
+    - name: Replace environment variables
+      run: |
+        # Show current directory and file structure
+        echo "Current directory: $(pwd)"
+        echo "All files in repository:"
+        find . -type f -name "*.html"
+        
+        # Replace in the root index.html specifically
+        if [ -f "./index.html" ]; then
+          echo "Found index.html in root, replacing variables..."
+          sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./index.html  
+          sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./index.html
+        else
+          echo "index.html not found in root, searching subdirectories..."
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
+        fi
+        
+        # Verify replacements worked
+        echo "Checking for remaining placeholders:"
+        find . -name "*.html" -exec grep -l "YOUR_.*_ID\|YOUR_PUBLIC_KEY" {} \; || echo "✓ All placeholders replaced successfully"
+    
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
