@@ -36,12 +36,10 @@ jobs:
         # Replace in the root index.html specifically
         if [ -f "./index.html" ]; then
           echo "Found index.html in root, replacing variables..."
-          sed -i "s/YOUR_PUBLIC_KEY/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" ./index.html
           sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./index.html  
           sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./index.html
         else
           echo "index.html not found in root, searching subdirectories..."
-          find . -name "index.html" -type f -exec sed -i "s/YOUR_PUBLIC_KEY/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" {} \;
           find . -name "index.html" -type f -exec sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
           find . -name "index.html" -type f -exec sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
         fi
