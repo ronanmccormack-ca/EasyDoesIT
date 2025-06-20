@@ -1,0 +1,44 @@
+# .github/workflows/deploy.yml
+name: Deploy Static Site
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        npm install -g html-minifier-terser
+        # Add any other build tools you need
+    
+    - name: Replace environment variables
+      run: |
+        # Replace placeholders in HTML with actual values from secrets
+        sed -i "s/YOUR_PUBLIC_KEY/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" index.html
+        sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" index.html
+        sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" index.html
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        # This preserves your custom domain setting
+        cname: easydoesit.ca
+        # Exclude source files if needed
+        exclude_assets: '.github,README.md,*.md'
