@@ -44,43 +44,9 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
             font-size: 1.5rem;
             font-weight: 700;
             color: #2c5259;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #2c5259, #e67e3b);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(44, 82, 89, 0.2);
-        }
-
-        .logo-icon::before {
-            content: '💻';
-            font-size: 24px;
-        }
-
-        .logo-icon::after {
-            content: '👍';
-            font-size: 14px;
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #e67e3b;
-            border: 2px solid white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .nav-links {
@@ -384,47 +350,95 @@
             letter-spacing: 0.5px;
         }
 
-        /* Team Section */
+        /* Team Section - Updated for Single Owner */
         .team {
-            padding: 4rem 0;
+            padding: 6rem 0;
             background: #ffffff;
         }
 
-        .team-grid {
+        .owner-profile {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .team-card {
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 3rem auto 0;
             background: #ffffff;
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 3rem;
+            border-radius: 20px;
             border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            text-align: center;
-            max-width: 280px;
+        }
+
+        .owner-profile:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2c5259, #e67e3b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 2rem;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        .team-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .team-card h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .owner-name {
+            font-size: 2rem;
+            font-weight: 800;
             color: #1e293b;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
-        .team-card p {
+        .owner-title {
+            font-size: 1.2rem;
+            color: #2c5259;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .owner-bio {
             color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .credential-badge {
+            background: linear-gradient(135deg, #2c5259, #e67e3b);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
         }
 
         /* Contact Info Section */
@@ -436,19 +450,25 @@
 
         .contact-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-top: 3rem;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
         }
 
         .contact-icon {
@@ -461,17 +481,25 @@
             justify-content: center;
             font-size: 1.2rem;
             flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .contact-text {
+            flex: 1;
         }
 
         .contact-item h4 {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            color: white;
         }
 
         .contact-item p {
             opacity: 0.9;
             font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
         }
 
         /* Footer */
@@ -513,8 +541,24 @@
                 grid-template-columns: 1fr;
             }
 
-            .team-grid {
-                grid-template-columns: 1fr;
+            .owner-profile {
+                padding: 2rem;
+                margin: 2rem auto 0;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .owner-name {
+                font-size: 1.75rem;
+            }
+
+            .credentials {
+                flex-direction: column;
+                align-items: center;
             }
 
             .contact-details {
@@ -528,13 +572,12 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <div class="logo-icon"></div>
                 Easy does IT
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#team">Owner</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#hero-form" class="contact-btn">Get Quote</a>
@@ -547,7 +590,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Professional IT Support You Can Trust</h1>
-                    <p>We provide comprehensive technology solutions for businesses and individuals. From installation to troubleshooting, our expert team ensures your technology works seamlessly.</p>
+                    <p>We provide comprehensive technology solutions for businesses and individuals. From hardware installation to troubleshooting, our expert team ensures your technology works seamlessly.</p>
                     
                     <div class="hero-features">
                         <div class="feature-item">
@@ -674,25 +717,28 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Owner Profile Section -->
     <section class="team" id="team">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Meet Our Expert Team</h2>
-                <p class="section-subtitle">Our certified professionals bring years of experience and dedication to solving your technology challenges.</p>
+                <h2 class="section-title">Meet the Owner</h2>
+                <p class="section-subtitle">Your trusted technology partner with the expertise to solve any IT challenge.</p>
             </div>
-            <div class="team-grid">
-                <div class="team-card">
-                    <h4>Senior IT Consultant</h4>
-                    <p>Specialized in enterprise solutions and network infrastructure with 10+ years of experience.</p>
+            <div class="owner-profile">
+                <div class="profile-image">
+                    <!-- Replace with actual profile image -->
+                    <img src="images/Ronan-McCormack.png" alt="Owner Profile">
                 </div>
-                <div class="team-card">
-                    <h4>Hardware Specialist</h4>
-                    <p>Expert in hardware installation, repair, and optimization for all types of computer systems.</p>
-                </div>
-                <div class="team-card">
-                    <h4>Software Support Lead</h4>
-                    <p>Specializes in software troubleshooting, system optimization, and user training programs.</p>
+                <h3 class="owner-name">Ronan Mc Cormack</h3>
+                <p class="owner-title">Owner & Senior IT Consultant</p>
+                <p class="owner-bio">
+                    With over 10 years of experience in information technology, Ronan founded Easy does IT to provide personalized, reliable IT support to businesses and individuals. His passion for technology and commitment to customer service has helped over 100 clients achieve their technology goals.
+                </p>
+                <div class="credentials">
+                    <div class="credential-badge">CompTIA A+ Certified</div>
+                    <div class="credential-badge">Microsoft Certified</div>
+                    <div class="credential-badge">Cisco Network Associate</div>
+                    <div class="credential-badge">15+ Years Experience</div>
                 </div>
             </div>
         </div>
@@ -708,28 +754,21 @@
             <div class="contact-details">
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
-                    <div>
+                    <div class="contact-text">
                         <h4>Phone Support</h4>
                         <p>(555) 123-4567</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">✉️</div>
-                    <div>
+                    <div class="contact-text">
                         <h4>Email Support</h4>
-                        <p>support@easydoesit.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">🏢</div>
-                    <div>
-                        <h4>Office Location</h4>
-                        <p>123 Tech Street, Digital City</p>
+                        <p>support@easydoesit.ca</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">⏰</div>
-                    <div>
+                    <div class="contact-text">
                         <h4>Business Hours</h4>
                         <p>Mon-Fri: 8AM-6PM<br>Emergency support available 24/7</p>
                     </div>
@@ -822,7 +861,7 @@
         }, observerOptions);
 
         // Apply animations to cards
-        document.querySelectorAll('.service-card, .team-card, .stat').forEach((card, index) => {
+        document.querySelectorAll('.service-card, .owner-profile, .stat').forEach((card, index) => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = `all 0.6s ease ${index * 0.1}s`;
