@@ -826,14 +826,13 @@
             }
             
             // Debug: Log the values being sent
-            console.log('EmailJS Public Key:', 'YOUR_PUBLIC_KEY');
             console.log('Service ID will be replaced by deploy script');
             console.log('Template ID will be replaced by deploy script');
             
             // Send email using EmailJS
             emailjs.sendForm(
-                'YOUR_SERVICE_ID',    // This gets replaced by your deploy script
-                'YOUR_TEMPLATE_ID',   // This gets replaced by your deploy script
+                'service_qy08lin',    // This gets replaced by your deploy script
+                'template_yj04ppa',   // This gets replaced by your deploy script
                 this
             ).then(function(response) {
                 console.log('EmailJS SUCCESS!', response.status, response.text);
