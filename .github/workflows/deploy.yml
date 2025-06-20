@@ -28,8 +28,27 @@ jobs:
     
     - name: Replace environment variables
       run: |
-        sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" index.html
-        sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" index.html
+        # Show current directory and file structure
+        echo "Current directory: $(pwd)"
+        echo "All files in repository:"
+        find . -type f -name "*.html"
+        
+        # Replace in the root index.html specifically
+        if [ -f "./index.html" ]; then
+          echo "Found index.html in root, replacing variables..."
+          sed -i "s/YOUR_PUBLIC_KEY/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" ./index.html
+          sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./index.html  
+          sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./index.html
+        else
+          echo "index.html not found in root, searching subdirectories..."
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_PUBLIC_KEY/${{ secrets.EMAILJS_PUBLIC_KEY }}/g" {} \;
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
+        fi
+        
+        # Verify replacements worked
+        echo "Checking for remaining placeholders:"
+        find . -name "*.html" -exec grep -l "YOUR_.*_ID\|YOUR_PUBLIC_KEY" {} \; || echo "✓ All placeholders replaced successfully"
     
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
