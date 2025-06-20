@@ -12,10 +12,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
+            color: #2c3e50;
+            background: #ffffff;
         }
 
         .container {
@@ -26,10 +26,13 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -39,9 +42,45 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c5259;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #2c5259, #e67e3b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(44, 82, 89, 0.2);
+        }
+
+        .logo-icon::before {
+            content: '💻';
+            font-size: 24px;
+        }
+
+        .logo-icon::after {
+            content: '👍';
+            font-size: 14px;
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #e67e3b;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .nav-links {
@@ -51,229 +90,351 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #64748b;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            color: #2c5259;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .contact-btn {
+            background: #2c5259;
             color: white;
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
+        .contact-btn:hover {
+            background: #1e3a40;
+            transform: translateY(-1px);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-20px) translateX(10px); }
-            100% { transform: translateY(0px) translateX(0px); }
+        /* Hero Section with Contact Form */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 4rem 0 6rem;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 0;
-            background: #f8f9fa;
-        }
-
-        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-features {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #64748b;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #2c5259;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .hero-contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            color: #374151;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5259;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-submit {
+            background: #2c5259;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: #1e3a40;
+            transform: translateY(-1px);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #2c5259;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #2c5259, #e67e3b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: #f8fafc;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #1e293b;
             margin-bottom: 1.5rem;
-            color: #2c3e50;
         }
 
         .about-text p {
-            color: #666;
+            color: #64748b;
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .stat {
             text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c5259;
             display: block;
         }
 
         .stat-label {
-            color: #666;
+            color: #64748b;
             font-size: 0.9rem;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        /* Team Section */
+        .team {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .team-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 280px;
+            width: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .team-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            padding: 6rem 0;
+            background: #1e293b;
             color: white;
         }
 
-        .contact-content {
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact-info {
+        .contact-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -281,23 +442,48 @@
         }
 
         .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
             background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 10px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
         }
 
-        .contact-item h4 {
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: #e67e3b;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: #0f172a;
             color: white;
             text-align: center;
             padding: 2rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
         }
 
         /* Responsive Design */
@@ -306,24 +492,32 @@
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
+            .hero-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-contact-form {
+                padding: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
             .stats {
                 grid-template-columns: 1fr;
             }
 
-            .services-grid {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-details {
                 grid-template-columns: 1fr;
             }
         }
@@ -333,22 +527,80 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">Easy does IT</div>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                Easy does IT
+            </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <a href="#hero-form" class="contact-btn">Get Quote</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with Contact Form -->
+    <section class="hero" id="hero-form">
         <div class="container">
             <div class="hero-content">
-                <h1>Professional IT Support Made Simple</h1>
-                <p>From hardware installation to troubleshooting, we provide reliable technology support when you need it most</p>
-                <a href="#contact" class="cta-button">Get Support Now</a>
+                <div class="hero-text">
+                    <h1>Professional IT Support You Can Trust</h1>
+                    <p>We provide comprehensive technology solutions for businesses and individuals. From installation to troubleshooting, our expert team ensures your technology works seamlessly.</p>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>24/7 Emergency Support Available</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Certified IT Professionals</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>Same-Day Service Response</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <span>100+ Satisfied Clients</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-contact-form">
+                    <div class="form-header">
+                        <h3>Get Your Free Quote</h3>
+                        <p>Tell us about your IT needs and we'll get back to you within 24 hours</p>
+                    </div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <input type="text" id="service" name="service" placeholder="e.g., Hardware installation, Troubleshooting">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Describe your IT support needs..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            <span>Get Free Quote</span>
+                            <span>→</span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -356,37 +608,40 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive IT support solutions tailored to meet your technology needs with professional expertise and reliable service.</p>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🔧</div>
                     <h3>Hardware Installation</h3>
-                    <p>Professional setup and installation of computers, printers, networking equipment, and other hardware components with precision and care.</p>
+                    <p>Professional setup and configuration of computers, servers, networking equipment, and peripherals. We ensure optimal performance and seamless integration with your existing systems.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔍</div>
-                    <h3>Troubleshooting</h3>
-                    <p>Quick diagnosis and resolution of technical issues, software problems, and system errors to get you back up and running efficiently.</p>
+                    <h3>Technical Troubleshooting</h3>
+                    <p>Expert diagnosis and resolution of hardware and software issues. Our systematic approach identifies root causes and implements lasting solutions to minimize downtime.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🛠️</div>
                     <h3>System Maintenance</h3>
-                    <p>Regular maintenance, updates, and optimization services to keep your technology running smoothly and prevent future issues.</p>
+                    <p>Proactive maintenance services including updates, security patches, performance optimization, and preventive care to keep your systems running efficiently.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
-                    <h3>Network Setup</h3>
-                    <p>Complete network configuration, Wi-Fi setup, and connectivity solutions for homes and small businesses.</p>
+                    <h3>Network Solutions</h3>
+                    <p>Complete network design, implementation, and management. From simple Wi-Fi setup to complex enterprise networks, we deliver reliable connectivity solutions.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">💻</div>
                     <h3>Software Support</h3>
-                    <p>Installation, configuration, and support for operating systems, applications, and specialized software packages.</p>
+                    <p>Installation, configuration, and ongoing support for operating systems, business applications, and specialized software packages tailored to your workflow.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📞</div>
-                    <h3>Remote Support</h3>
-                    <p>Convenient remote assistance for software issues, troubleshooting, and technical guidance from anywhere.</p>
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Services</h3>
+                    <p>Cloud migration, backup solutions, and ongoing cloud infrastructure management to ensure data security and accessibility from anywhere.</p>
                 </div>
             </div>
         </div>
@@ -397,21 +652,17 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Why Choose Easy does IT?</h2>
-                    <p>We understand that technology should work for you, not against you. Our experienced team provides reliable, professional IT support tailored to your specific needs.</p>
-                    <p>Whether you're dealing with a critical system failure or need routine maintenance, we deliver prompt, effective solutions with a personal touch. No issue is too small, and no challenge is too complex.</p>
+                    <h2>Trusted IT Partner Since Day One</h2>
+                    <p>With years of experience in technology support, Easy does IT has built a reputation for delivering reliable, professional IT services that businesses and individuals can depend on.</p>
+                    <p>Our team of certified technicians combines technical expertise with exceptional customer service to provide solutions that not only solve immediate problems but also prevent future issues.</p>
                     <div class="stats">
                         <div class="stat">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Support Available</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
+                            <span class="stat-number">100+</span>
                             <span class="stat-label">Clients Served</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">95%</span>
-                            <span class="stat-label">Same-Day Resolution</span>
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Support Available</span>
                         </div>
                         <div class="stat">
                             <span class="stat-number">5★</span>
@@ -419,33 +670,68 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-                        💼
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Expert Team</h2>
+                <p class="section-subtitle">Our certified professionals bring years of experience and dedication to solving your technology challenges.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h4>Senior IT Consultant</h4>
+                    <p>Specialized in enterprise solutions and network infrastructure with 10+ years of experience.</p>
+                </div>
+                <div class="team-card">
+                    <h4>Hardware Specialist</h4>
+                    <p>Expert in hardware installation, repair, and optimization for all types of computer systems.</p>
+                </div>
+                <div class="team-card">
+                    <h4>Software Support Lead</h4>
+                    <p>Specializes in software troubleshooting, system optimization, and user training programs.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Contact Info Section -->
+    <section class="contact-info" id="contact">
         <div class="container">
-            <div class="contact-content">
-                <h2>Ready to Get Started?</h2>
-                <p>Contact us today for reliable, professional IT support that gets results</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>📞 Phone Support</h4>
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Get in Touch</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Multiple ways to reach our expert support team</p>
+            </div>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone Support</h4>
                         <p>(555) 123-4567</p>
                     </div>
-                    <div class="contact-item">
-                        <h4>✉️ Email Us</h4>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h4>Email Support</h4>
                         <p>support@easydoesit.com</p>
                     </div>
-                    <div class="contact-item">
-                        <h4>⏰ Business Hours</h4>
-                        <p>Mon-Fri: 8AM-6PM<br>Emergency support available</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div>
+                        <h4>Office Location</h4>
+                        <p>123 Tech Street, Digital City</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Mon-Fri: 8AM-6PM<br>Emergency support available 24/7</p>
                     </div>
                 </div>
             </div>
@@ -459,7 +745,14 @@
         </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
+    
     <script>
+        // Initialize EmailJS with your public key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        // emailjs.init('YOUR_PUBLIC_KEY');
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -474,7 +767,46 @@
             });
         });
 
-        // Add scroll effect to service cards
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.form-submit');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (replace with actual EmailJS or backend logic)
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                this.reset();
+                
+                // Reset button
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            }, 2000);
+            
+            // Uncomment and configure for actual EmailJS integration:
+            /*
+            emailjs.sendForm(
+                'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
+                'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID
+                this
+            ).then(function(response) {
+                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                document.getElementById('contact-form').reset();
+            }, function(error) {
+                alert('Sorry, there was an error sending your message. Please try again or email us directly.');
+                console.error('EmailJS error:', error);
+            }).finally(function() {
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            });
+            */
+        });
+
+        // Add scroll-triggered animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -489,12 +821,25 @@
             });
         }, observerOptions);
 
-        // Apply animation to service cards
-        document.querySelectorAll('.service-card').forEach((card, index) => {
+        // Apply animations to cards
+        document.querySelectorAll('.service-card, .team-card, .stat').forEach((card, index) => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
+            card.style.transform = 'translateY(30px)';
             card.style.transition = `all 0.6s ease ${index * 0.1}s`;
             observer.observe(card);
+        });
+
+        // Animate hero form on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroForm = document.querySelector('.hero-contact-form');
+            heroForm.style.opacity = '0';
+            heroForm.style.transform = 'translateY(30px)';
+            heroForm.style.transition = 'all 0.8s ease 0.3s';
+            
+            setTimeout(() => {
+                heroForm.style.opacity = '1';
+                heroForm.style.transform = 'translateY(0)';
+            }, 100);
         });
     </script>
 </body>
