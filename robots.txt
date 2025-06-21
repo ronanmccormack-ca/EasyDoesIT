@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://easydoesit.ca/sitemap.xml
+Sitemap: https://www.easydoesit.ca/sitemap.xml
