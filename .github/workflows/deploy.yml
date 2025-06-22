@@ -28,6 +28,18 @@ jobs:
     
     - name: Replace environment variables
       run: |
+        echo "=== BEFORE replacement ==="
+            if [ -f "./index.html" ]; then
+              echo "Content around SERVICE_ID:"
+              grep -n -C 2 "SERVICE_ID" ./index.html || echo "No SERVICE_ID found"
+              echo "Content around TEMPLATE_ID:"
+              grep -n -C 2 "TEMPLATE_ID" ./index.html || echo "No TEMPLATE_ID found"
+            fi
+            
+            echo "=== Secrets check ==="
+            echo "EMAILJS_SERVICE_ID length: ${#EMAILJS_SERVICE_ID}"
+            echo "EMAILJS_SERVICE_ID starts with: ${EMAILJS_SERVICE_ID:0:8}..."
+
         # Show current directory and file structure
         echo "Current directory: $(pwd)"
         echo "All files in repository:"
