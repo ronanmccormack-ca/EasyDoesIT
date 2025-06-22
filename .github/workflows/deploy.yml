@@ -33,41 +33,20 @@ jobs:
         echo "All files in repository:"
         find . -type f -name "*.html"
         
-        # Set variables based on event type
-        if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
-          echo "Production deployment - using secrets"
-          SERVICE_ID="${{ secrets.EMAILJS_SERVICE_ID }}"
-          TEMPLATE_ID="${{ secrets.EMAILJS_TEMPLATE_ID }}"
-        else
-          echo "Pull request or non-main branch - using placeholder values"
-          SERVICE_ID="test_service_id"
-          TEMPLATE_ID="test_template_id"
-        fi
-        
         # Replace in the root index.html specifically
         if [ -f "./index.html" ]; then
           echo "Found index.html in root, replacing variables..."
-          sed -i "s/YOUR_SERVICE_ID/$SERVICE_ID/g" ./index.html  
-          sed -i "s/YOUR_TEMPLATE_ID/$TEMPLATE_ID/g" ./index.html
-          echo "Replacement completed for root index.html"
+          sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./index.html  
+          sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./index.html
         else
           echo "index.html not found in root, searching subdirectories..."
-          find . -name "index.html" -type f -exec sed -i "s/YOUR_SERVICE_ID/$SERVICE_ID/g" {} \;
-          find . -name "index.html" -type f -exec sed -i "s/YOUR_TEMPLATE_ID/$TEMPLATE_ID/g" {} \;
-          echo "Replacement completed for all index.html files"
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
+          find . -name "index.html" -type f -exec sed -i "s/YOUR_TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
         fi
-        
-        # Show what was actually replaced (without revealing secrets)
-        echo "Files that were processed:"
-        find . -name "*.html" -exec echo "Processing: {}" \;
         
         # Verify replacements worked
         echo "Checking for remaining placeholders:"
-        if find . -name "*.html" -exec grep -l "YOUR_.*_ID\|YOUR_PUBLIC_KEY" {} \; 2>/dev/null; then
-          echo "⚠️  Warning: Some placeholders may not have been replaced"
-        else
-          echo "✓ All placeholders appear to be replaced successfully"
-        fi
+        find . -name "*.html" -exec grep -l "YOUR_.*_ID\|YOUR_PUBLIC_KEY" {} \; || echo "✓ All placeholders replaced successfully"
     
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
