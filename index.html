@@ -833,8 +833,8 @@
             
             // Send email using EmailJS
             emailjs.sendForm(
-                'service_qy08lin',  
-                'template_yj04ppa',   
+                'service_qy08lin',    // This gets replaced by your deploy script
+                'template_yj04ppa',   // This gets replaced by your deploy script
                 this
             ).then(function(response) {
                 console.log('EmailJS SUCCESS!', response.status, response.text);
