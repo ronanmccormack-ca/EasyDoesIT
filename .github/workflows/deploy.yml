@@ -27,6 +27,9 @@ jobs:
         npm install -g html-minifier-terser
     
     - name: Replace environment variables
+      env:
+        EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+        EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
       run: |
         echo "=== BEFORE replacement ==="
             if [ -f "./index.html" ]; then
