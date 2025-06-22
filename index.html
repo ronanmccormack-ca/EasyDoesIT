@@ -833,8 +833,8 @@
             
             // Send email using EmailJS
             emailjs.sendForm(
-                'YOUR_SERVICE_ID',    // This gets replaced by your deploy script
-                'YOUR_TEMPLATE_ID',   // This gets replaced by your deploy script
+                'YOUR_SERVICE_ID',  
+                'YOUR_TEMPLATE_ID',   
                 this
             ).then(function(response) {
                 console.log('EmailJS SUCCESS!', response.status, response.text);
