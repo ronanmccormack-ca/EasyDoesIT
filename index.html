@@ -566,6 +566,8 @@
             }
         }
     </style>
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 <body>
     <!-- Header -->
@@ -735,10 +737,10 @@
                     With over 10 years of experience in information technology, Ronan founded Easy does IT to provide personalized, reliable IT support to businesses and individuals. His passion for technology and commitment to customer service has helped over 100 clients achieve their technology goals.
                 </p>
                 <div class="credentials">
-                    <div class="credential-badge">CompTIA A+ Certified</div>
+                    <div class="credential-badge">MSc Data Science</div>
+                    <div class="credential-badge">BSc Computing</div>
                     <div class="credential-badge">Microsoft Certified</div>
-                    <div class="credential-badge">Cisco Network Associate</div>
-                    <div class="credential-badge">15+ Years Experience</div>
+                    <div class="credential-badge">10+ Years Experience</div>
                 </div>
             </div>
         </div>
@@ -831,8 +833,8 @@
             
             // Send email using EmailJS
             emailjs.sendForm(
-                'service_qy08lin',    // This gets replaced by your deploy script
-                'template_yj04ppa',   // This gets replaced by your deploy script
+                'service_qy08lin',  
+                'template_yj04ppa',   
                 this
             ).then(function(response) {
                 console.log('EmailJS SUCCESS!', response.status, response.text);
