@@ -7,18 +7,25 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
     
@@ -32,16 +39,16 @@ jobs:
         EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
       run: |
         echo "=== BEFORE replacement ==="
-            if [ -f "./index.html" ]; then
-              echo "Content around SERVICE_ID:"
-              grep -n -C 2 "SERVICE_ID" ./index.html || echo "No SERVICE_ID found"
-              echo "Content around TEMPLATE_ID:"
-              grep -n -C 2 "TEMPLATE_ID" ./index.html || echo "No TEMPLATE_ID found"
-            fi
-            
-            echo "=== Secrets check ==="
-            echo "EMAILJS_SERVICE_ID length: ${#EMAILJS_SERVICE_ID}"
-            echo "EMAILJS_SERVICE_ID starts with: ${EMAILJS_SERVICE_ID:0:8}..."
+        if [ -f "./index.html" ]; then
+          echo "Content around SERVICE_ID:"
+          grep -n -C 2 "SERVICE_ID" ./index.html || echo "No SERVICE_ID found"
+          echo "Content around TEMPLATE_ID:"
+          grep -n -C 2 "TEMPLATE_ID" ./index.html || echo "No TEMPLATE_ID found"
+        fi
+        
+        echo "=== Secrets check ==="
+        echo "EMAILJS_SERVICE_ID length: ${#EMAILJS_SERVICE_ID}"
+        echo "EMAILJS_SERVICE_ID starts with: ${EMAILJS_SERVICE_ID:0:8}..."
 
         # Show current directory and file structure
         echo "Current directory: $(pwd)"
@@ -60,14 +67,39 @@ jobs:
         fi
         
         # Verify replacements worked
+        echo "=== AFTER replacement ==="
+        if [ -f "./index.html" ]; then
+          echo "Content around service_id after replacement:"
+          grep -n -C 2 "service_id" ./index.html || echo "No service_id found"
+          echo "Content around template_id after replacement:"
+          grep -n -C 2 "template_id" ./index.html || echo "No template_id found"
+        fi
+        
         echo "Checking for remaining placeholders:"
-        find . -name "*.html" -exec grep -l "YOUR_.*_ID\|YOUR_PUBLIC_KEY" {} \; || echo "✓ All placeholders replaced successfully"
-    
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+        find . -name "*.html" -exec grep -l "SERVICE_ID\|TEMPLATE_ID" {} \; || echo "✓ All placeholders replaced successfully"
+
+    - name: Setup Pages
       if: github.ref == 'refs/heads/main'
+      uses: actions/configure-pages@v4
+    
+    - name: Upload artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
-        cname: www.easydoesit.ca
-        exclude_assets: '.github,README.md,*.md'
+        # Upload entire repository
+        path: '.'
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
