@@ -899,7 +899,94 @@
         // Form submission handling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Form submitted!');
+            console.log('Form submitted!'); // Debug log
             
             // Show loading state
-            const submitBtn = this.querySelector('.form-
+            const submitBtn = this.querySelector('.form-submit');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.disabled = true;
+            
+            // Debug: Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS is not loaded!');
+                alert('EmailJS library failed to load. Please check your internet connection.');
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Debug: Log the values being sent
+            console.log('Service ID will be replaced by deploy script');
+            console.log('Template ID will be replaced by deploy script');
+            
+            // Send email using EmailJS
+            emailjs.sendForm(
+                'SERVICE_ID',  
+                'TEMPLATE_ID', //  
+                this
+            ).then(function(response) {
+                console.log('EmailJS SUCCESS!', response.status, response.text);
+                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                document.getElementById('contact-form').reset();
+            }).catch(function(error) {  // Changed from second parameter to .catch()
+                console.error('EmailJS FAILED:', error);
+                alert('Sorry, there was an error sending your message. Please try again or email us directly at support@easydoesit.ca');
+            }).finally(function() {
+                // Reset button state
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Add this to test if the script is running at all:
+        console.log('EmailJS script loaded and form handler attached');
+
+        // Test if EmailJS library loaded properly
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            if (typeof emailjs !== 'undefined') {
+                console.log('EmailJS library is available');
+            } else {
+                console.error('EmailJS library is NOT available');
+            }
+        });
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animations to cards
+        document.querySelectorAll('.service-card, .owner-profile, .stat').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Animate hero form on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroForm = document.querySelector('.hero-contact-form');
+            heroForm.style.opacity = '0';
+            heroForm.style.transform = 'translateY(30px)';
+            heroForm.style.transition = 'all 0.8s ease 0.3s';
+            
+            setTimeout(() => {
+                heroForm.style.opacity = '1';
+                heroForm.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
