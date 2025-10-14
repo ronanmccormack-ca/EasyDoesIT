@@ -1,0 +1,228 @@
+{
+    "company": {
+      "name": "Easy Does IT",
+      "nameOrange": "IT",
+      "phone": "(604) 354-9399",
+      "email": "info@easydoesit.ca",
+      "supportEmail": "support@easydoesit.ca",
+      "hours": "Mon-Fri: 8AM-6PM",
+      "location": "Vancouver BC",
+      "googleAnalyticsId": "G-QZYQ7SWSJ9",
+      "emailJsPublicKey": "Kuz7m8pSGS07b3nwR",
+      "emailJsServiceId": "SERVICE_ID",
+      "emailJsTemplateId": "TEMPLATE_ID"
+    },
+    "hero": {
+      "title": "Professional IT Support You Can Trust",
+      "description": "We help individuals and small businesses with their everyday technology needs. From choosing the right equipment to setting it up and teaching you how to use it, we make technology work for you - not against you.",
+      "features": [
+        "Hardware Procurement & Installation",
+        "User Training & Support",
+        "System Maintenance & Care",
+        "Professional IT Consultation"
+      ],
+      "formTitle": "Get Your Free Quote",
+      "formSubtitle": "Tell us about your IT needs and we'll provide personalized recommendations"
+    },
+    "services": {
+      "sectionTitle": "Our Services",
+      "sectionSubtitle": "We focus on the essentials - helping you choose, set up, learn, and maintain your technology systems with confidence.",
+      "items": [
+        {
+            "icon": "🌐",
+            "title": "Website Design & Hosting",
+            "description": "Professional website design and reliable hosting solutions to establish your online presence. We create beautiful, functional websites that work for your business.",
+            "features": [
+              "Custom website design and development",
+              "Responsive mobile-friendly layouts",
+              "Secure and fast hosting services",
+              "Domain registration and email setup"
+            ]
+          },
+          {
+            "icon": "🛒",
+            "title": "Hardware Procurement",
+            "description": "Get expert advice on choosing the right technology for your needs and budget. We help you navigate the overwhelming world of tech purchasing with confidence.",
+            "features": [
+              "Needs assessment and requirements analysis",
+              "Budget-friendly hardware recommendations",
+              "Vendor sourcing and price comparison",
+              "Purchase coordination and delivery management"
+            ]
+          },
+          {
+            "icon": "⚙️",
+            "title": "Installation & Maintenance",
+            "description": "Professional installation of hardware and software systems, plus ongoing maintenance to keep everything running smoothly. From initial setup to long-term care.",
+            "features": [
+              "Computer and device setup",
+              "Software installation and configuration",
+              "Regular system health checks and updates",
+              "Performance optimization and backup management"
+            ]
+          },
+          {
+            "icon": "🎓",
+            "title": "User Training & Support",
+            "description": "Learn to use your technology confidently with personalized training sessions tailored to your skill level and specific needs.",
+            "features": [
+              "One-on-one training sessions",
+              "Software and system tutorials",
+              "Best practices and productivity tips",
+              "Ongoing support and questions"
+            ]
+          },
+          {
+            "icon": "💡",
+            "title": "Professional Consultation",
+            "description": "Strategic IT guidance for making informed technology decisions. Get expert advice on technology investments and digital transformation.",
+            "features": [
+              "Technology planning and strategy",
+              "System architecture recommendations",
+              "Security and compliance guidance",
+              "Growth and scalability planning"
+            ]
+          },
+          {
+            "icon": "🏠",
+            "title": "Home Office Solutions",
+            "description": "Complete home office setup services for remote workers, freelancers, and small business owners who need reliable technology infrastructure.",
+            "features": [
+              "Home office design and setup",
+              "Remote work optimization",
+              "Video conferencing solutions",
+              "Productivity software setup"
+            ]
+          }
+      ]
+    },
+    "about": {
+      "title": "Making Technology Simple and Accessible",
+      "paragraphs": [
+        "At Easy Does IT, we believe technology should work for you, not against you. We specialize in helping individuals and small businesses navigate their technology needs with practical, straightforward solutions.",
+        "Our approach is simple: listen to your needs, recommend the right solutions, implement them properly, and teach you how to use them effectively. No jargon, no overselling - just honest, professional IT support."
+      ],
+      "stats": [
+        {
+          "number": "100+",
+          "label": "Happy Clients"
+        },
+        {
+          "number": "5★",
+          "label": "Average Rating"
+        },
+        {
+          "number": "10+",
+          "label": "Years Experience"
+        }
+      ]
+    },
+    "projects": {
+      "sectionTitle": "Recent Projects",
+      "sectionSubtitle": "Check out some of our latest work helping clients solve their technology challenges.",
+      "items": [
+        {
+            "title": "TeeSheets.ca",
+            "description": "Custom golf tee time booking platform with online scheduling, user management, and responsive design.",
+            "image": "images/tee-sheets.png",
+            "url": "https://www.teesheets.ca",
+            "tags": ["HTML5", "CSS3", "Responsive", "Node.js", "SQL"]
+          },
+        {
+            "title": "ManilleAuto.com",
+            "description": "Automotive service website featuring service listings, contact information, and location details.",
+            "image": "images/manilleauto.png",
+            "url": "https://www.manilleauto.com",
+            "tags": ["Business", "Services", "Local SEO"]
+        },
+        {
+            "title": "RonanMcCormack.ca",
+            "description": "Professional portfolio website showcasing work experience, projects, and contact information.",
+            "image": "images/ronanmccormack.png",
+            "url": "https://www.ronanmccormack.ca",
+            "tags": ["Portfolio", "Professional", "Clean Design"]
+          }
+      ]
+    },
+    "team": {
+      "sectionTitle": "Meet the Team",
+      "sectionSubtitle": "Your trusted technology partner committed to making IT simple and accessible.",
+      "owner": {
+        "name": "Ronan Mc Cormack",
+        "title": "Owner & IT Consultant",
+        "image": "images/Ronan-McCormack.png",
+        "bio": "With over 10 years in IT and a passion for helping people understand technology, Ronan founded Easy Does IT to bridge the gap between complex technology and everyday users. He specializes in making technology decisions simple and ensuring clients feel confident using their systems.",
+        "credentials": [
+          "MSc Data Science",
+          "BSc Computing",
+          "Microsoft Certified",
+          "10+ Years Experience"
+        ]
+      }
+    },
+    "contact": {
+      "sectionTitle": "Ready to Get Started?",
+      "sectionSubtitle": "Contact us today for your free consultation",
+      "items": [
+        {
+          "icon": "📞",
+          "title": "Phone Support",
+          "text": "(604) 354-9399"
+        },
+        {
+          "icon": "✉️",
+          "title": "Email Support",
+          "text": "info@easydoesit.ca"
+        },
+        {
+          "icon": "⏰",
+          "title": "Business Hours",
+          "text": "Mon-Fri: 8AM-6PM"
+        }
+      ]
+    },
+    "form": {
+      "serviceOptions": [
+        {
+          "value": "",
+          "label": "Select a service..."
+        },
+        {
+          "value": "hardware-procurement",
+          "label": "Hardware Procurement & Advice"
+        },
+        {
+          "value": "installation-setup",
+          "label": "Hardware/Software Installation"
+        },
+        {
+          "value": "user-training",
+          "label": "User Training & Support"
+        },
+        {
+          "value": "system-maintenance",
+          "label": "System Maintenance"
+        },
+        {
+          "value": "consultation",
+          "label": "Professional IT Consultation"
+        },
+        {
+          "value": "multiple",
+          "label": "Multiple Services"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    "footer": {
+      "copyright": "© 2025 Easy Does IT. All rights reserved. Making technology simple and accessible.",
+      "privacyLink": "privacy-policy.html"
+    },
+    "meta": {
+      "description": "Professional IT support services in Vancouver BC. Hardware procurement, installation, user training, and maintenance. Same-day service. Call (604) 354-9399 for reliable Vancouver IT support.",
+      "title": "Easy Does IT - Professional IT Support in Vancouver BC"
+    }
+  }
