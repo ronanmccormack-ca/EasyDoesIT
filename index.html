@@ -436,48 +436,42 @@
             font-size: 1.2rem;
         }
 
-        /* About Section */
+        /* About/Stats Section */
         .about {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background: #ffffff;
         }
 
         .about-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.7;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
         }
 
         .stat {
             text-align: center;
+            padding: 2rem 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: #2c5259;
             display: block;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
@@ -676,7 +670,8 @@
             }
 
             .stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 2rem;
             }
 
             .owner-profile {
@@ -718,7 +713,6 @@
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -777,6 +771,17 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="stats" id="stats">
+                    <!-- Stats will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
@@ -799,23 +804,6 @@
             </div>
             <div class="projects-grid" id="projects-grid">
                 <!-- Project cards will be populated dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 id="about-title">Loading...</h2>
-                    <div id="about-paragraphs">
-                        <!-- Paragraphs will be populated dynamically -->
-                    </div>
-                    <div class="stats" id="stats">
-                        <!-- Stats will be populated dynamically -->
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -960,14 +948,7 @@
                 </a>
             `).join('');
 
-            // About section
-            document.getElementById('about-title').textContent = config.about.title;
-            
-            const aboutParagraphs = document.getElementById('about-paragraphs');
-            aboutParagraphs.innerHTML = config.about.paragraphs.map(p => 
-                `<p>${p}</p>`
-            ).join('');
-            
+            // Stats section
             const stats = document.getElementById('stats');
             stats.innerHTML = config.about.stats.map(stat => `
                 <div class="stat">
