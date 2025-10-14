@@ -14,7 +14,7 @@
     },
     "hero": {
       "title": "Professional IT Support You Can Trust",
-      "description": "We help individuals and small businesses with their everyday technology needs. From choosing the right equipment to setting it up and teaching you how to use it, we make technology work for you - not against you.",
+      "description": "Expert IT support for individuals and small businesses. From hardware procurement to training and maintenance, we provide reliable IT support you can trust.",
       "features": [
         "Hardware Procurement & Installation",
         "User Training & Support",
@@ -25,8 +25,8 @@
       "formSubtitle": "Tell us about your IT needs and we'll provide personalized recommendations"
     },
     "services": {
-      "sectionTitle": "Our Services",
-      "sectionSubtitle": "We focus on the essentials - helping you choose, set up, learn, and maintain your technology systems with confidence.",
+      "sectionTitle": "Our IT Support Services",
+      "sectionSubtitle": "Comprehensive IT support helping you choose, set up, learn, and maintain your technology systems with confidence.",
       "items": [
         {
             "icon": "🌐",
@@ -222,7 +222,7 @@
       "privacyLink": "privacy-policy.html"
     },
     "meta": {
-      "description": "Professional IT support services in Vancouver BC. Hardware procurement, installation, user training, and maintenance. Same-day service. Call (604) 354-9399 for reliable Vancouver IT support.",
-      "title": "Easy Does IT - Professional IT Support in Vancouver BC"
+      "description": "Professional IT support services in Vancouver BC. Expert IT support for hardware, software, training, and maintenance. Same-day IT support. Call (604) 354-9399.",
+      "title": "IT Support Vancouver BC | Easy Does IT - Professional IT Services"
     }
   }
