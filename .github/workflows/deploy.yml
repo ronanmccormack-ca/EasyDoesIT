@@ -33,50 +33,50 @@ jobs:
       run: |
         npm install -g html-minifier-terser
     
-    - name: Replace environment variables in config.json
+    - name: Replace environment variables
       env:
         EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
         EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
       run: |
         echo "=== BEFORE replacement ==="
-        if [ -f "./config.json" ]; then
-          echo "Content around SERVICE_ID in config.json:"
-          grep -n -C 2 "SERVICE_ID" ./config.json || echo "No SERVICE_ID found"
-          echo "Content around TEMPLATE_ID in config.json:"
-          grep -n -C 2 "TEMPLATE_ID" ./config.json || echo "No TEMPLATE_ID found"
+        if [ -f "./index.html" ]; then
+          echo "Content around SERVICE_ID:"
+          grep -n -C 2 "SERVICE_ID" ./index.html || echo "No SERVICE_ID found"
+          echo "Content around TEMPLATE_ID:"
+          grep -n -C 2 "TEMPLATE_ID" ./index.html || echo "No TEMPLATE_ID found"
         fi
         
         echo "=== Secrets check ==="
         echo "EMAILJS_SERVICE_ID length: ${#EMAILJS_SERVICE_ID}"
         echo "EMAILJS_SERVICE_ID starts with: ${EMAILJS_SERVICE_ID:0:8}..."
-        echo "EMAILJS_TEMPLATE_ID length: ${#EMAILJS_TEMPLATE_ID}"
-        echo "EMAILJS_TEMPLATE_ID starts with: ${EMAILJS_TEMPLATE_ID:0:8}..."
 
         # Show current directory and file structure
         echo "Current directory: $(pwd)"
-        echo "Looking for config.json:"
-        find . -type f -name "config.json"
+        echo "All files in repository:"
+        find . -type f -name "*.html"
         
-        # Replace in config.json
-        if [ -f "./config.json" ]; then
-          echo "Found config.json in root, replacing variables..."
-          sed -i "s/SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./config.json  
-          sed -i "s/TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./config.json
+        # Replace in the root index.html specifically
+        if [ -f "./index.html" ]; then
+          echo "Found index.html in root, replacing variables..."
+          sed -i "s/SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" ./index.html  
+          sed -i "s/TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" ./index.html
         else
-          echo "config.json not found in root, searching subdirectories..."
-          find . -name "config.json" -type f -exec sed -i "s/SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
-          find . -name "config.json" -type f -exec sed -i "s/TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
+          echo "index.html not found in root, searching subdirectories..."
+          find . -name "index.html" -type f -exec sed -i "s/SERVICE_ID/${{ secrets.EMAILJS_SERVICE_ID }}/g" {} \;
+          find . -name "index.html" -type f -exec sed -i "s/TEMPLATE_ID/${{ secrets.EMAILJS_TEMPLATE_ID }}/g" {} \;
         fi
         
         # Verify replacements worked
         echo "=== AFTER replacement ==="
-        if [ -f "./config.json" ]; then
-          echo "Content after replacement (showing emailJs section):"
-          grep -n -A 2 "emailJs" ./config.json || echo "No emailJs found"
+        if [ -f "./index.html" ]; then
+          echo "Content around service_id after replacement:"
+          grep -n -C 2 "service_id" ./index.html || echo "No service_id found"
+          echo "Content around template_id after replacement:"
+          grep -n -C 2 "template_id" ./index.html || echo "No template_id found"
         fi
         
         echo "Checking for remaining placeholders:"
-        find . -name "config.json" -exec grep -l "SERVICE_ID\|TEMPLATE_ID" {} \; || echo "✓ All placeholders replaced successfully"
+        find . -name "*.html" -exec grep -l "SERVICE_ID\|TEMPLATE_ID" {} \; || echo "✓ All placeholders replaced successfully"
 
     - name: Setup Pages
       if: github.ref == 'refs/heads/main'
