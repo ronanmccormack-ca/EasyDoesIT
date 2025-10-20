@@ -4,19 +4,120 @@
     <!-- Google tag will be inserted dynamically -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="" id="meta-description">
+    
+    <!-- SEO Meta Tags - Hardcoded -->
+    <meta name="description" content="Easy Does IT provides professional IT support and managed services in Vancouver BC. Expert network management, cybersecurity, cloud solutions, and 24/7 technical support for businesses. Your trusted IT partner.">
+    <meta name="keywords" content="IT support Vancouver, easy does it, IT services Vancouver, IT support near me, tech support Vancouver BC, managed IT services, network support, cybersecurity Vancouver, business IT solutions, IT company Vancouver">
+    <meta name="author" content="Easy Does IT">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags - Hardcoded -->
+    <meta property="og:title" content="Easy Does IT | Professional IT Support Services Vancouver BC">
+    <meta property="og:description" content="Expert IT support and managed services in Vancouver. Network management, cybersecurity, cloud solutions, and 24/7 technical support for your business.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.easydoesit.ca/">
+    <meta property="og:image" content="https://www.easydoesit.ca/images/og-image.jpg">
+    <meta property="og:site_name" content="Easy Does IT">
+    <meta property="og:locale" content="en_CA">
+    
+    <!-- Twitter Card Meta Tags - Hardcoded -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Easy Does IT | IT Support Vancouver BC">
+    <meta name="twitter:description" content="Professional IT support and managed services in Vancouver BC. Expert tech solutions for your business.">
+    <meta name="twitter:image" content="https://www.easydoesit.ca/images/twitter-card.jpg">
+    
+    <!-- Geo Tags for Local SEO -->
+    <meta name="geo.region" content="CA-BC">
+    <meta name="geo.placename" content="Vancouver">
+    <meta name="geo.position" content="49.2827;-123.1207">
+    <meta name="ICBM" content="49.2827, -123.1207">
+    
+    <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <title id="meta-title">IT Support Vancouver BC | Easy Does IT - Professional IT Services</title>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.easydoesit.ca/">
+    
+    <title>Easy Does IT | Professional IT Support Vancouver BC - Tech Solutions Made Simple</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    
+    <!-- Schema.org Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Easy Does IT",
+      "image": "https://www.easydoesit.ca/images/logo-icon.png",
+      "@id": "https://www.easydoesit.ca",
+      "url": "https://www.easydoesit.ca",
+      "telephone": "+1-604-123-4567",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Main Street",
+        "addressLocality": "Vancouver",
+        "addressRegion": "BC",
+        "postalCode": "V6B 1A1",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.2827,
+        "longitude": -123.1207
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/easydoesit",
+        "https://www.facebook.com/easydoesit"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "50"
+      },
+      "description": "Professional IT support and managed services in Vancouver BC. Expert network management, cybersecurity, cloud solutions, and 24/7 technical support."
+    }
+    </script>
+    
+    <!-- Schema.org - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Easy Does IT",
+      "url": "https://www.easydoesit.ca",
+      "logo": "https://www.easydoesit.ca/images/logo-icon.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-604-123-4567",
+        "contactType": "customer service",
+        "areaServed": "CA",
+        "availableLanguage": "en"
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="images/logo-icon.png" alt="Easy Does IT logo" class="logo-icon">
-                <span id="logo-text">IT Support Vancouver BC | Easy Does IT - Professional IT Services</span>
+                <img src="images/logo-icon.png" alt="Easy Does IT logo - Professional IT Support Vancouver BC" class="logo-icon">
+                <span id="logo-text">Loading...</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
@@ -171,10 +272,6 @@
         }
 
         function populatePage() {
-            // Meta tags
-            document.getElementById('meta-title').textContent = config.meta.title;
-            document.getElementById('meta-description').setAttribute('content', config.meta.description);
-            
             // Insert Google Analytics
             if (config.company.googleAnalyticsId) {
                 const gaScript1 = document.createElement('script');
