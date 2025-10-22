@@ -1,0 +1,149 @@
+backend:
+  name: github
+  repo: ronanmccormack-ca/easydoesit
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "site_config"
+    label: "Site Configuration"
+    files:
+      - name: "config"
+        label: "Site Config"
+        file: "config.json"
+        fields:
+          # Meta section
+          - label: "Meta"
+            name: "meta"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+          
+          # Company section
+          - label: "Company"
+            name: "company"
+            widget: "object"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Support Email", name: "supportEmail", widget: "string"}
+              - {label: "Google Analytics ID", name: "googleAnalyticsId", widget: "string"}
+              - {label: "EmailJS Public Key", name: "emailJsPublicKey", widget: "string"}
+          
+          # Hero section
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Text", name: "text", widget: "string"}
+          
+          # Contact Form
+          - label: "Contact Form"
+            name: "form"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+          
+          # Stats section
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - {label: "Number", name: "number", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+          
+          # Services section
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - {label: "Section Title", name: "sectionTitle", widget: "string"}
+              - {label: "Section Subtitle", name: "sectionSubtitle", widget: "text"}
+              - label: "Service Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+                  - label: "Features"
+                    name: "features"
+                    widget: "list"
+                    field: {label: "Feature", name: "feature", widget: "string"}
+          
+          # Projects section
+          - label: "Projects"
+            name: "projects"
+            widget: "object"
+            fields:
+              - {label: "Section Title", name: "sectionTitle", widget: "string"}
+              - {label: "Section Subtitle", name: "sectionSubtitle", widget: "text"}
+              - label: "Project Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+                  - {label: "URL", name: "url", widget: "string"}
+                  - {label: "Image", name: "image", widget: "image"}
+                  - label: "Tags"
+                    name: "tags"
+                    widget: "list"
+                    field: {label: "Tag", name: "tag", widget: "string"}
+          
+          # Team section
+          - label: "Team"
+            name: "team"
+            widget: "object"
+            fields:
+              - {label: "Section Title", name: "sectionTitle", widget: "string"}
+              - {label: "Section Subtitle", name: "sectionSubtitle", widget: "text"}
+              - label: "Owner"
+                name: "owner"
+                widget: "object"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Image", name: "image", widget: "image"}
+                  - label: "Credentials"
+                    name: "credentials"
+                    widget: "list"
+                    field: {label: "Credential", name: "credential", widget: "string"}
+          
+          # Contact section
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Section Title", name: "sectionTitle", widget: "string"}
+              - {label: "Section Subtitle", name: "sectionSubtitle", widget: "text"}
+              - label: "Contact Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Icon", name: "icon", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Text", name: "text", widget: "string"}
+          
+          # Footer
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Copyright", name: "copyright", widget: "string"}
+              - {label: "Privacy Link", name: "privacyLink", widget: "string"}
